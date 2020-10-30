@@ -1,11 +1,36 @@
 import React from 'react'
+import CreatePlayer from '../Components/CreatePlayer'
 import PlayerCard from '../Components/PlayerCard'
-import api from '../api'
+// import api from '../api'
 
 class Players extends React.Component {
 
     state = {
-        api
+        api: []
+    }
+
+    componentDidMount(){
+        fetch("http://localhost:3000/players")
+        .then(response => response.json())
+        .then(data => this.setState({
+            api: data
+        }))
+    }
+
+    createPlayer = (playerObj) => {
+        let options = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json"
+            },
+            body: JSON.stringify(playerObj)
+        }
+        fetch("http://localhost:3000/players", options)
+        .then(response => response.json())
+        .then( newPlayer => this.setState( (prevState) => ({
+            api: [newPlayer, ...prevState.api]
+        })))
     }
 
     renderPlayers = () => {
@@ -22,7 +47,8 @@ class Players extends React.Component {
         return(
             <div style={styling}>
                 <h1>Players</h1>
-                {this.renderPlayers()}
+                { this.state.api.length > 0 ? this.renderPlayers() : <h2>Now Loading...</h2>}
+                <CreatePlayer createPlayer={this.createPlayer} />
             </div>
         )
     }

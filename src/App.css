@@ -8,11 +8,17 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-button {
+button, input {
   border-radius: 5px;
   border: 1px solid #00e0ff;
+  margin: 0 1vw 1vh;
 }
 
 button:hover {
   background-color: #007080;
+}
+
+input {
+  margin: 1vh 1vw;
+  background-color: #404040;
 }

@@ -30,5 +30,5 @@ Deliverables:
 <!-- - all player cards list out top to bottom -->
 
 Stretch Goals:
-- remove api file and add in a Rails backend along with correct fetches
+<!-- - remove api file and add in a Rails backend along with correct fetches -->
 - players chosen as a hero or villian are removed from the players component
