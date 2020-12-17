@@ -10,7 +10,7 @@ class Players extends React.Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/players")
+        fetch("https://pure-wildwood-82992.herokuapp.com/players")
         .then(response => response.json())
         .then(data => this.setState({
             api: data
@@ -26,7 +26,7 @@ class Players extends React.Component {
             },
             body: JSON.stringify(playerObj)
         }
-        fetch("http://localhost:3000/players", options)
+        fetch("https://pure-wildwood-82992.herokuapp.com/players", options)
         .then(response => response.json())
         .then( newPlayer => this.setState( (prevState) => ({
             api: [newPlayer, ...prevState.api]
